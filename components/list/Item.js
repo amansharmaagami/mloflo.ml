@@ -45,7 +45,7 @@ export default function Item({
 						}).format(new Date(createdAt))}
 					</p>
 				</div>
-				<div className="row p-1 border-bottom">{text}</div>
+				<div className="row p-1 border-bottom">From: {from}</div>
 			</li>
 			{isMailOpen && (
 				<Wrapper>
