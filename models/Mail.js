@@ -31,6 +31,8 @@ const mailSchema = new Schema(
 	{ timestamps: true }
 );
 
+mailSchema.index({ createdAt: 1 }, { expireAfterSeconds: 7200 });
+
 mailSchema.pre("save", async function () {
 	if (this.isNew) {
 		this._inbox = this.to.split("@").shift();
