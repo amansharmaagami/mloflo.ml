@@ -20,7 +20,7 @@ function Inbox() {
 		}
 	}
 
-	const { data: mails } = useQuery("mails", getMails, { initialData: [] });
+	const { data: mails } = useQuery(["mails", inbox], getMails, { initialData: [] });
 
 	return (
 		<div>
