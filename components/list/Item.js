@@ -38,7 +38,11 @@ export default function Item({
 					<h4> {subject} </h4>
 
 					<p className="font-normal text-gray-500">
-						{createdAt.toLocaleString()}
+						{new Intl.DateTimeFormat("en-GB", {
+							dateStyle: "full",
+							timeStyle: "short",
+							hour12: true,
+						}).format(new Date(createdAt))}
 					</p>
 				</div>
 				<div className="row p-1 border-bottom">{text}</div>
