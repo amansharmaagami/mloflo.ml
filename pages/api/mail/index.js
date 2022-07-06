@@ -18,7 +18,7 @@ export const config = {
 export default async function handler(req, res) {
 	await new Promise((resolve) => {
 		// you may use any other multer function
-		const mw = upload.any();
+		const mw = upload.none();
 
 		//use resolve() instead of next()
 		mw(req, res, resolve);
