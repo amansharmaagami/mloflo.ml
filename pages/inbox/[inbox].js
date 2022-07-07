@@ -25,12 +25,12 @@ function Inbox() {
 	return (
 		<div>
 			<Header />
-			<main className="p-8">
-				<h1 className="font-medium text-center leading-tight text-4xl m-10 text-gray-600">
+			<main className="sm:p-1 md:p-4 lg:p-8">
+				<h1 className="font-medium text-center leading-tight text-2xl md:text-3xl lg:text-4xl m-2 sm:m-4 md:m-6 lg:m-10 text-gray-600">
 					{inbox}@mloflo.ml
 				</h1>
 
-				<section className="p-4">
+				<section className="sm:p-2 md:p-3 lg:p-4">
 					{Boolean(mails.length) ? (
 						<List>
 							{mails.map((mail) => (
