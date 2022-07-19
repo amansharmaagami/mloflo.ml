@@ -1,6 +1,8 @@
+import multer from "multer";
+import emailParser from "address-rfc2822";
+
 import db from "../../../utils/db";
 import Mail from "../../../models/Mail";
-import multer from "multer";
 
 const storage = multer.memoryStorage();
 
@@ -24,7 +26,15 @@ export default async function handler(req, res) {
 
 	await db();
 
-  const test = await Mail.create(req.body);
+	const { to } = req.body;
 
-	res.status(201).send(test);
+	for (let email of to.split(",")) {
+		const [{ address: to }] = emailParser.parse(email);
+
+		if (to.split("@").pop() === process.env.DOMAIN) {
+			await Mail.create({ ...req.body, to });
+		}
+	}
+
+	res.status(201).send();
 }

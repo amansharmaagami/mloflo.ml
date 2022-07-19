@@ -32,6 +32,7 @@ const mailSchema = new Schema(
 );
 
 mailSchema.index({ createdAt: 1 }, { expireAfterSeconds: 7200 });
+mailSchema.index({ _inbox: 1 });
 
 mailSchema.pre("save", async function () {
 	if (this.isNew) {
