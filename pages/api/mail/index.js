@@ -29,7 +29,9 @@ export default async function handler(req, res) {
 	const { to } = req.body;
 
 	for (let email of to.split(",")) {
-		const [{ address: to }] = emailParser.parse(email);
+		let [{ address: to }] = emailParser.parse(email);
+
+		to = to.toLowerCase();
 
 		if (to.split("@").pop() === process.env.DOMAIN) {
 			await Mail.create({ ...req.body, to });

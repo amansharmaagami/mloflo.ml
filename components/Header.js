@@ -96,7 +96,7 @@ export default function Header() {
 									type="text"
 									placeholder="view-this-inbox"
 									value={inbox}
-									onChange={(e) => setInbox(e.target.value)}
+									onChange={(e) => setInbox(e.target.value.toLowerCase())}
 								/>
 								<button
 									type="submit"

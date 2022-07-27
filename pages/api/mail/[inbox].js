@@ -7,7 +7,9 @@ export default async function handler(req, res) {
 	}
 	await db();
 
-	const mails = await Mail.find({ _inbox: req.query.inbox }).sort({
+	const _inbox = req.query.inbox.toLowerCase();
+
+	const mails = await Mail.find({ _inbox }).sort({
 		createdAt: -1,
 	});
 
